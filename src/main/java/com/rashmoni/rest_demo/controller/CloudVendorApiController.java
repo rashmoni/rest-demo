@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cloudvendor")
+@RequestMapping("/cloudvendor/v1")
 public class CloudVendorApiController {
 
 
@@ -18,28 +18,28 @@ public class CloudVendorApiController {
         this.cloudVendorService = cloudVendorService;
     }
 
-    @GetMapping("{vendorId}")
+    @GetMapping("/vendor/{vendorId}")
     public CloudVendor fetchCloudVendorDetails(@PathVariable("vendorId") String vendorId){
 
         return cloudVendorService.fetchCloudVendor(vendorId);
     }
 
-    @GetMapping
+    @GetMapping("/vendors")
     public List<CloudVendor> fetchAllCloudVendorDetails(){
         return cloudVendorService.fetchAllCloudVendors();
     }
 
-    @PostMapping
+    @PostMapping("/vendor")
     public String createCloudVendorDetails(@RequestBody CloudVendor cloudVendor){
        cloudVendorService.createCloudVendor(cloudVendor);
         return "Cloud vendor successfully created";
     }
-    @PutMapping
+    @PutMapping("/vendor")
     public String updateCloudVendorDetails(@RequestBody CloudVendor cloudVendor){
         cloudVendorService.updateCloudVendor(cloudVendor);
         return "Cloud vendor successfully updated";
     }
-    @DeleteMapping("{vendorId}")
+    @DeleteMapping("/vendor/{vendorId}")
     public String deleteCloudVendorDetails(@PathVariable("vendorId") String vendorId){
         cloudVendorService.deleteCloudVendor(vendorId);
         return "Cloud vendor successfully deleted";
