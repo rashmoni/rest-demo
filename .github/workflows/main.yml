@@ -19,7 +19,7 @@ jobs:
       - name: Build JIB container and publish to Dockerhubb
         run: |
           mvn package com.google.cloud.tools:jib-maven-plugin:3.4.1:build \
-          -Djib.to.image=registry.hub.docker.com/rashudey/google-jib-image-example1 \
+          -Djib.to.image=registry.hub.docker.com/rashudey/rest-demo \
           -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }} \
           -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
         shell: bash
